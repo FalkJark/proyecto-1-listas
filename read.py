@@ -1,3 +1,4 @@
+import os
 import db
 
 def read():
@@ -23,6 +24,7 @@ def read():
 
         #catch the operation search
         searchRow = False
+        valueSearchRow = None
         if("BUSCAR" in tem[1]):
             searchRow = True # <--------------- indica si hay que realizar una busqueda
             tem[1] = tem[1].replace("BUSCAR","")
@@ -40,7 +42,35 @@ def read():
             aux = int(j.strip())
             valuesRow.append(aux)
         
-        '''
+        
+        #---------------------------------------- SEARCH --------------------------------------------
+        positionRow = []
+        if searchRow == True:
+            cont = 1
+            for n in valuesRow:
+                #print("valores: ",n)
+                #print("valor de busqueda: ",valueSearchRow)
+                if int(n) == int(valueSearchRow):
+                    positionRow.append(cont)
+                cont = cont + 1  
+
+        #add to vector rows all the information
+        fila = db.row(nameRow,valuesRow,sortRow,searchRow,valueSearchRow,positionRow)
+        db.arrayRows.append(fila)
+        #print(positionRow)
+    
+    #fuera del for
+    os.system('clear')
+    print("\n")
+    print("-------------------------------------Datos cargados con exito-------------------------------------\n")
+    
+    aaaa = input("Presiona cualquier tecla y enter para continuar: ")
+
+
+        
+
+
+    '''
         #segmento de prueba
         print("nombre de la lista: ",nameRow)
         print("ordenar: ",sortRow)
@@ -50,4 +80,4 @@ def read():
         print("valore de la lista: ",valuesRow)
         print("\n")
 
-        '''
+    '''
