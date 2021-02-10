@@ -1,5 +1,6 @@
 import os
 import db
+#import index
 
 def read():
     nameFile = input("Ingresa la ruta de tu archivo: ")
@@ -59,12 +60,17 @@ def read():
         db.arrayRows.append(fila)
         #print(positionRow)
     
+    
+    
+    
+    
     #fuera del for
+
     os.system('clear')
     print("\n")
     print("-------------------------------------Datos cargados con exito-------------------------------------\n")
     
-    aaaa = input("Presiona cualquier tecla y enter para continuar: ")
+    aaaa = input("Presiona enter para continuar: ")
 
 
         
