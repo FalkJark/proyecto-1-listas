@@ -2,6 +2,15 @@ import os
 import db
 #import index
 
+def sortOnMyOwn(v):
+    for i in range(len(v)-1):
+        for j in range(len(v)-1):
+            if v[j] > v[j+1]:
+                aux = v[j]
+                v[j] = v[j+1]
+                v[j+1] = aux
+    return v     
+
 def read():
     nameFile = input("Ingresa la ruta de tu archivo: ")
     archivo = open(nameFile)
@@ -22,6 +31,7 @@ def read():
             tem[1] = tem[1].replace("ORDENAR","")
             tem[1] = tem[1].rstrip(" ")
             tem[1] = tem[1].rstrip(",")
+
 
         #catch the operation search
         searchRow = False
@@ -58,13 +68,14 @@ def read():
         #add to vector rows all the information
         fila = db.row(nameRow,valuesRow,sortRow,searchRow,valueSearchRow,positionRow)
         db.arrayRows.append(fila)
-        #print(positionRow)
-    
-    
-    
-    
-    
+
+
     #fuera del for
+    for i in db.arrayRows:
+        if i.sort == True:
+            vd = i.values.copy()
+            vo = sortOnMyOwn(vd)
+            i.orderedValues = vo
 
     os.system('clear')
     print("\n")

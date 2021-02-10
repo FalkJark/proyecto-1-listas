@@ -8,3 +8,5 @@ class row:
         self.search = search
         self.valueSearch = valueSearch
         self.position = position
+    
+    orderedValues = []
